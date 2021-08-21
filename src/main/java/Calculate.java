@@ -5,7 +5,7 @@ import java.util.TreeMap;
 public class Calculate {
     public static void main(String[] args) {
         Map<Integer, String> solutions = new TreeMap<>(); //Stores correct answers.
-        int precision = 2; //Sets the precision to work with.
+        int precision = 5; //Sets the precision to work with.
         int s = 0;
         long startTime = System.currentTimeMillis();
         int a; //Farm land used for Recreation
@@ -33,7 +33,7 @@ public class Calculate {
                                             if (c+b == 100) {
                                                 String solution = "A=" + a + " B=" + b + " C=" + c + " D=" + d + " E=" + e + " F=" + f;
                                                 int cost = (a*costA)+(b*costB)+(c*costC)+(d*costD)+(e*costE)+(f*costF);
-                                                System.out.println("Solution Found! " + solution + " Cost: " + cost);
+                                                //System.out.println("Solution Found! " + solution + " Cost: " + cost);
                                                 solutions.put(cost, solution);
                                                 s++;
                                             }
@@ -59,7 +59,8 @@ public class Calculate {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Would you like to print all solutions? Y or N");
-        if (scanner.nextLine().equalsIgnoreCase("Y")) { solutions.forEach((integer, s1) -> System.out.println("Solution: " + s1 + " Cost: " + integer));
+        if (scanner.nextLine().equalsIgnoreCase("Y")) {
+            solutions.forEach((integer, s1) -> System.out.println("Solution: " + s1 + " Cost: " + integer));
             System.out.println("Printed: " + solutions.size());
         }
     }
