@@ -59,9 +59,7 @@ public class Calculate {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Would you like to print all solutions? Y or N");
-        if (scanner.nextLine().equalsIgnoreCase("Y")) {            solutions.forEach((integer, s1) -> {
-                System.out.println("Solution: " + s1 + " Cost: " + integer);
-            });
+        if (scanner.nextLine().equalsIgnoreCase("Y")) { solutions.forEach((integer, s1) -> System.out.println("Solution: " + s1 + " Cost: " + integer));
             System.out.println("Printed: " + solutions.size());
         }
     }
