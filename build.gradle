@@ -10,6 +10,7 @@ repositories {
 }
 
 dependencies {
+    implementation("com.aparapi:aparapi:2.0.0")
 }
 
 test {

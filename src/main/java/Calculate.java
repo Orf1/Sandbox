@@ -1,26 +1,41 @@
+import java.util.Map;
+import java.util.Scanner;
+import java.util.TreeMap;
+
 public class Calculate {
     public static void main(String[] args) {
-        int increment = 4;
+        Map<Integer, String> solutions = new TreeMap<>(); //Stores correct answers.
+        int precision = 2; //Sets the precision to work with.
         int s = 0;
-
         long startTime = System.currentTimeMillis();
-        for (int a = 0; a <= 300; a=a+2) {
-            for (int b = 0; b < 100; b=b+increment) {
-                for (int c = 0; c < 100; c=c+increment) {
-                    for (int d = 0; d < 100; d=d+ increment) {
-                        for (int e = 0; e < 150; e=e+increment) {
-                            for (int f = 0; f < 150; f=f+increment) {
-                                //System.out.println("Testing A: " + a + " B: " + b + " C: " + c + " D: " + d + " E: " + e + " F: " + f);
+        int a; //Farm land used for Recreation
+        int b; //Farm land used for Development
+        int c; //Army land used for Recreation
+        int d; //Army lane used for Development
+        int e; //Mine land used for Recreation
+        int f; //Mine land used for Development
+        int costA = 50;
+        int costB = 500;
+        int costC = 200;
+        int costD = 2000;
+        int costE = 100;
+        int costF = 1000;
+
+        for (a = 0; a <= 300; a=a+2) {
+            for (b = 0; b < 100; b=b+precision) {
+                for (c = 0; c < 100; c=c+precision) {
+                    for (d = 0; d < 100; d=d+ precision) {
+                        for (e = 0; e < 150; e=e+precision) {
+                            for (f = 0; f < 150; f=f+precision) {
                                 if (a+b+c+d+e+f == 550) {
-                                    //System.out.println("Condition 1 Match.");
                                     if (b+d+f >= 300) {
-                                        //System.out.println("Condition 2 Match.");
                                         if (c+e<=200) {
-                                            //System.out.println("Condition 3 Match.");
                                             if (c+b == 100) {
-                                                System.out.println("Solution Found! A: " + a + " B: " + b + " C: " + c + " D: " + d + " E: " + e + " F: " + f);
+                                                String solution = "A=" + a + " B=" + b + " C=" + c + " D=" + d + " E=" + e + " F=" + f;
+                                                int cost = (a*costA)+(b*costB)+(c*costC)+(d*costD)+(e*costE)+(f*costF);
+                                                System.out.println("Solution Found! " + solution + " Cost: " + cost);
+                                                solutions.put(cost, solution);
                                                 s++;
-                                                //return;
                                             }
                                         }
                                     }
@@ -30,16 +45,24 @@ public class Calculate {
                     }
                 }
             }
-            System.out.println("Progress: " + a/3 + "/100%" + "\nTotal solutions found: " + s);
+            System.out.println("Progress: " + Math.round((a/(float)3)*Math.pow(10,1))/Math.pow(10,1) + "/100%" + "\nTotal solutions found: " + s);
         }
-        long time = System.currentTimeMillis() - startTime;
+        long endTime = System.currentTimeMillis();
+
         System.out.println("-----------------------------");
         System.out.println("Program Completed!");
         System.out.println("Statistics: ");
-        System.out.println("Increment used: " + increment);
+        System.out.println("Increment used: " + precision);
         System.out.println("Total answers found: " + s);
-        System.out.println("Time taken to complete: " + time + " ms");
+        System.out.println("Time taken to complete: " + (endTime-startTime) + " ms");
         System.out.println("-----------------------------");
 
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Would you like to print all solutions? Y or N");
+        if (scanner.nextLine().equalsIgnoreCase("Y")) {            solutions.forEach((integer, s1) -> {
+                System.out.println("Solution: " + s1 + " Cost: " + integer);
+            });
+            System.out.println("Printed: " + solutions.size());
+        }
     }
 }
