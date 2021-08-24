@@ -5,49 +5,54 @@ import java.util.TreeMap;
 public class Calculate {
     public static void main(String[] args) {
         Map<Integer, String> solutions = new TreeMap<>(); //Stores correct answers.
-        int precision = 2; //Sets the precision to work with.
+        int precision = 1; //Sets the precision to work with.
         int s = 0;
+        int start = -10;
         long startTime = System.currentTimeMillis();
-        int a; //Farm land used for Recreation
-        int b; //Farm land used for Development
-        int c; //Army land used for Recreation
-        int d; //Army lane used for Development
-        int e; //Mine land used for Recreation
-        int f; //Mine land used for Development
-        int costA = 50;
-        int costB = 500;
-        int costC = 200;
-        int costD = 2000;
-        int costE = 100;
-        int costF = 1000;
+        int Gr; //Farm land used for Recreation
+        int Gd; //Farm land used for Development
+        int Ar; //Army land used for Recreation
+        int Ad; //Army lane used for Development
+        int Mr; //Mine land used for Recreation
+        int Md; //Mine land used for Development
+        int costGr = 50;
+        int costGd = 500;
+        int costAr = 200;
+        int costAd = 2000;
+        int costMr = 100;
+        int costMd = 1000;
 
-        for (a = 0; a <= 300; a=a+2) {
-            for (b = 0; b < 100; b=b+precision) {
-                for (c = 0; c < 100; c=c+precision) {
-                    for (d = 0; d < 100; d=d+ precision) {
-                        for (e = 0; e < 150; e=e+precision) {
-                            for (f = 0; f < 150; f=f+precision) {
-                                if (a+b+c+d+e+f == 550) {
-                                    if (a+b == 300 && c+d == 100 && e+f==150) {
-                                        if (b+d+f >= 300) {
-                                            if (c+e<=200) {
-                                                if (c+b == 100) {
-                                                    String solution = "A=" + a + " B=" + b + " C=" + c + " D=" + d + " E=" + e + " F=" + f;
-                                                    int cost = (a*costA)+(b*costB)+(c*costC)+(d*costD)+(e*costE)+(f*costF);
-                                                    //System.out.println("Solution Found! " + solution + " Cost: " + cost);
-                                                    solutions.put(cost, solution);
-                                                    s++;
+        for (Gr = start; Gr <= 300; Gr=Gr+2) {
+            for (Gd = start; Gd < 100; Gd=Gd+precision) {
+                if (Gr+Gd==300) {
+                    for (Ar = start; Ar < 100; Ar=Ar+precision) {
+                        for (Ad = start; Ad < 100; Ad=Ad+ precision) {
+                            if (Ar+Ad==100) {
+                                for (Mr = start; Mr < 150; Mr=Mr+precision) {
+                                    for (Md = start; Md < 150; Md=Md+precision) {
+                                        if (Mr+Md==150) {
+                                            if (Gd+Ad+Md >= 300) {
+                                                if (Ar+Mr<=200) {
+                                                    if (Ar+Gd == 100) {
+                                                        String solution = "A=" + Gr + " B=" + Gd + " C=" + Ar + " D=" + Ad + " E=" + Mr + " F=" + Md;
+                                                        int cost = (Gr*costGr)+(Gd*costGd)+(Ar*costAr)+(Ad*costAd)+(Mr*costMr)+(Md*costMd);
+                                                        //System.out.println("Solution Found! " + solution + " Cost: " + cost);
+                                                        solutions.put(cost, solution);
+                                                        s++;
+                                                    }
                                                 }
                                             }
                                         }
                                     }
                                 }
                             }
+
                         }
                     }
                 }
+
             }
-            System.out.println("Progress: " + Math.round((a/(float)3)*Math.pow(10,1))/Math.pow(10,1) + "/100%" + "\nTotal solutions found: " + s);
+            System.out.println("Progress: " + Math.round((Gr/(float)3)*Math.pow(10,1))/Math.pow(10,1) + "/100%" + "\nTotal solutions found: " + s);
         }
         long endTime = System.currentTimeMillis();
 
