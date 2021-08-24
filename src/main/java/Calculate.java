@@ -5,7 +5,7 @@ import java.util.TreeMap;
 public class Calculate {
     public static void main(String[] args) {
         Map<Integer, String> solutions = new TreeMap<>(); //Stores correct answers.
-        int precision = 5; //Sets the precision to work with.
+        int precision = 2; //Sets the precision to work with.
         int s = 0;
         long startTime = System.currentTimeMillis();
         int a; //Farm land used for Recreation
@@ -28,14 +28,16 @@ public class Calculate {
                         for (e = 0; e < 150; e=e+precision) {
                             for (f = 0; f < 150; f=f+precision) {
                                 if (a+b+c+d+e+f == 550) {
-                                    if (b+d+f >= 300) {
-                                        if (c+e<=200) {
-                                            if (c+b == 100) {
-                                                String solution = "A=" + a + " B=" + b + " C=" + c + " D=" + d + " E=" + e + " F=" + f;
-                                                int cost = (a*costA)+(b*costB)+(c*costC)+(d*costD)+(e*costE)+(f*costF);
-                                                //System.out.println("Solution Found! " + solution + " Cost: " + cost);
-                                                solutions.put(cost, solution);
-                                                s++;
+                                    if (a+b == 300 && c+d == 100 && e+f==150) {
+                                        if (b+d+f >= 300) {
+                                            if (c+e<=200) {
+                                                if (c+b == 100) {
+                                                    String solution = "A=" + a + " B=" + b + " C=" + c + " D=" + d + " E=" + e + " F=" + f;
+                                                    int cost = (a*costA)+(b*costB)+(c*costC)+(d*costD)+(e*costE)+(f*costF);
+                                                    //System.out.println("Solution Found! " + solution + " Cost: " + cost);
+                                                    solutions.put(cost, solution);
+                                                    s++;
+                                                }
                                             }
                                         }
                                     }
