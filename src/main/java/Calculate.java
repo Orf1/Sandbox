@@ -4,6 +4,11 @@ import java.util.TreeMap;
 
 public class Calculate {
     public static void main(String[] args) {
+        boolean a = true;
+        if (true) {
+            main2(null);
+            return;
+        }
         Map<Integer, String> solutions = new TreeMap<>(); //Stores correct answers.
         int precision = 1; //Sets the precision to work with.
         int s = 0;
@@ -69,6 +74,28 @@ public class Calculate {
         if (scanner.nextLine().equalsIgnoreCase("Y")) {
             solutions.forEach((integer, s1) -> System.out.println("Solution: " + s1 + " Cost: " + integer));
             System.out.println("Printed: " + solutions.size());
+        }
+    }
+
+    public static void main2(String[] args) {
+        int cf;
+        int cc;
+        int weightCf = 40;
+        int weightCc = 50;
+        int sizeCf = 2;
+        int sizeCc = 3;
+        double costCf = 2.20;
+        double costCc = 3.00;
+
+
+        for(cf = 0; cf <=925; cf++) {
+            for(cc = 0; cc <=666; cc++) {
+                if ((cf*weightCf) + (cc*weightCc) == 37000) {
+                    if ((cf*sizeCf) + (cc*sizeCc) == 2000) {
+                        System.out.println("Found an answer: CC: " + cc + " CF: " + cf);
+                    }
+                }
+            }
         }
     }
 }
